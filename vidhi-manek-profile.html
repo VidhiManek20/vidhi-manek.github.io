@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidhi Manek</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F8F5FF;
+    --bg-deep: #EDE7F9;
+    --ink: #2D2640;
+    --accent: #8B6DB0;
+    --accent-soft: #B89FD4;
+    --accent-wash: rgba(139,109,176,0.07);
+    --muted: #7A7189;
+    --card: #FFFFFF;
+    --border: #DDD5EC;
+    --glow: rgba(139,109,176,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Libre Franklin', sans-serif; background: var(--bg); color: var(--ink); overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; width: 100%; padding: 20px 8vw; display: flex; justify-content: space-between; align-items: center; z-index: 100; backdrop-filter: blur(20px); background: rgba(248,245,255,0.85); border-bottom: 1px solid var(--border); }
+  nav .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 500; color: var(--ink); text-decoration: none; }
+  nav .nav-links { display: flex; gap: 32px; }
+  nav .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.3s; }
+  nav .nav-links a:hover { color: var(--accent); }
+
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 8vw 80px; position: relative; }
+  .hero-bg-shape { position: absolute; top: 10%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle at 40% 40%, var(--glow) 0%, transparent 65%); border-radius: 50%; filter: blur(60px); pointer-events: none; }
+  .hero-bg-shape-2 { position: absolute; bottom: 5%; left: -8%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(184,159,212,0.08) 0%, transparent 70%); border-radius: 50%; filter: blur(50px); pointer-events: none; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-eyebrow { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); background: var(--accent-wash); padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 400; line-height: 1.1; margin-bottom: 24px; }
+  .hero h1 .highlight { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
+  .hero-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 36px; max-width: 560px; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 13px 30px; border-radius: 10px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.5px; text-decoration: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+  .btn-fill { background: var(--accent); color: #fff; }
+  .btn-fill:hover { background: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 24px var(--glow); }
+  .btn-ghost { border: 1.5px solid var(--border); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .marquee { overflow: hidden; padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--card); }
+  .marquee-inner { display: flex; width: max-content; animation: scroll 30s linear infinite; }
+  .marquee-inner span { font-size: 0.85rem; font-weight: 400; white-space: nowrap; padding: 0 28px; color: var(--muted); letter-spacing: 0.5px; }
+  .marquee-inner span.pop { color: var(--accent); font-weight: 500; }
+  @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  .section { padding: 80px 8vw; }
+  .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 400; margin-bottom: 40px; line-height: 1.2; }
+
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+  .about-text p { color: var(--muted); line-height: 1.85; font-size: 0.92rem; font-weight: 300; }
+  .about-text p + p { margin-top: 14px; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+  .stat:hover { border-color: var(--accent-soft); transform: translateY(-3px); box-shadow: 0 10px 32px var(--glow); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent); margin-bottom: 4px; }
+  .stat-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px; text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-soft)); opacity: 0; transition: opacity 0.3s; }
+  .card:hover { border-color: var(--accent-soft); transform: translateY(-4px); box-shadow: 0 12px 36px var(--glow); }
+  .card:hover::before { opacity: 1; }
+  .card .arrow { position: absolute; top: 20px; right: 20px; font-size: 1rem; color: var(--border); transition: all 0.3s; }
+  .card:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
+  .card .chip { display: inline-block; font-size: 0.65rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); background: var(--accent-wash); padding: 4px 12px; border-radius: 6px; margin-bottom: 14px; }
+  .card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 6px; line-height: 1.3; padding-right: 30px; }
+  .card .org { font-size: 0.82rem; color: var(--accent); font-weight: 500; margin-bottom: 10px; }
+  .card p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+  .card-static { cursor: default; }
+  .card-static .arrow { display: none; }
+  .card-static::before { display: none; }
+
+  .contact { text-align: center; border-top: 1px solid var(--border); }
+  .contact p { color: var(--muted); font-size: 0.95rem; font-weight: 300; margin-bottom: 28px; }
+  .contact-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .contact-btns a { padding: 13px 30px; border-radius: 10px; text-decoration: none; font-size: 0.82rem; font-weight: 500; border: 1.5px solid var(--border); color: var(--ink); transition: all 0.3s; }
+  .contact-btns a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  footer { padding: 28px 8vw; text-align: center; font-size: 0.7rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.show { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav .nav-links { gap: 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .section { padding: 60px 6vw; }
+    .hero { padding: 100px 6vw 60px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="#" class="logo">Vidhi Manek</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-bg-shape-2"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">NYU Center for Data Science '26</div>
+    <h1>Hi, I'm <span class="highlight">Vidhi.</span></h1>
+    <p class="hero-desc">Data scientist building systems that turn messy, unstructured data into trustworthy, actionable insights. I work across NLP, healthcare analytics, and applied ML.</p>
+    <div class="hero-cta">
+      <a href="mailto:vm2725@nyu.edu" class="btn btn-fill">Say hello</a>
+      <a href="https://www.linkedin.com/in/vidhi-manek20" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      <a href="#work" class="btn btn-ghost">See my work</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-inner">
+    <span class="pop">NLP / LLMs</span><span>Healthcare Analytics</span><span class="pop">GenAI / RAG</span><span>Anomaly Detection</span><span class="pop">Statistical Modeling</span><span>Data Visualization</span><span class="pop">Unsupervised Learning</span><span>LLM Evaluation</span><span class="pop">Python / SQL / R</span><span>PyTorch / TensorFlow</span><span class="pop">Azure / FAISS</span><span>Hugging Face / LangChain</span>
+    <span class="pop">NLP / LLMs</span><span>Healthcare Analytics</span><span class="pop">GenAI / RAG</span><span>Anomaly Detection</span><span class="pop">Statistical Modeling</span><span>Data Visualization</span><span class="pop">Unsupervised Learning</span><span>LLM Evaluation</span><span class="pop">Python / SQL / R</span><span>PyTorch / TensorFlow</span><span class="pop">Azure / FAISS</span><span>Hugging Face / LangChain</span>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">About</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:400;margin-bottom:20px;">Building AI that's trustworthy, traceable, and useful.</h2>
+      <p>I recently graduated with an MS in Data Science from NYU (3.93 GPA) and hold a BS in Mathematics from Pandit Deendayal Energy University (3.996 GPA). My work spans healthcare data science, NLP, forensic analytics, and LLM evaluation.</p>
+      <p>I care deeply about making AI outputs defensible and usable for the people who depend on them, whether that's investigators at the UN, clinicians navigating transplant literature, or researchers studying global nursing safety. Currently presenting research at AcademyHealth 2026 in Seattle.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="stat-num">3.93</div><div class="stat-desc">GPA, NYU MS Data Science</div></div>
+      <div class="stat"><div class="stat-num">12K+</div><div class="stat-desc">Clinical records analyzed at NYU Nursing</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-desc">LLM configs benchmarked for clinical RAG</div></div>
+      <div class="stat"><div class="stat-num">9</div><div class="stat-desc">Modules built for UNDP forensics platform</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="section-label">Selected Work</div>
+  <h2>Projects & Research</h2>
+  <div class="cards">
+    <a href="https://drive.google.com/file/d/1tgJhIZ8y6g8Iw2EM9DqbyhtjWRL86oY-/view?usp=sharing" target="_blank" class="card reveal">
+      <span class="arrow">&#8599;</span>
+      <div class="chip">Capstone</div>
+      <h3>Bibliometrics & LLMs for Transplant Knowledge Distillation</h3>
+      <div class="org">CSTAR Lab, NYU Langone Health</div>
+      <p>Citation-aware RAG pipeline for transplant literature synthesis. RPYS filtering, FAISS retrieval, cross-encoder reranking, LLM summarization. 32-question clinical benchmark across six model configurations.</p>
+    </a>
+    <a href="https://drive.google.com/file/d/1Kk1elQ-0Ur2axTHMyuUvaWB5xQJlo_gN/view?usp=sharing" target="_blank" class="card reveal">
+      <span class="arrow">&#8599;</span>
+      <div class="chip">NLP / Retrieval</div>
+      <h3>Hierarchical Retrieval & Ranking of Math Misconceptions using LLMs</h3>
+      <div class="org">NYU Center for Data Science</div>
+      <p>Fine-tuned MathBERT and Qwen-Math 14B in a multi-stage retrieval pipeline. Semantic search, prompt tuning. MAP@25 and recall-based evaluation.</p>
+    </a>
+    <a href="https://drive.google.com/drive/folders/1oyz44ZP4TV3KMruMa_EY7sjmFhYINUYk?usp=drive_link" target="_blank" class="card reveal">
+      <span class="arrow">&#8599;</span>
+      <div class="chip">Applied ML</div>
+      <h3>Assessing Professor Effectiveness</h3>
+      <div class="org">NYU Center for Data Science</div>
+      <p>Regression and classification models on 89K+ records. Feature engineering and ranking analysis for predictive academic insights at scale.</p>
+    </a>
+    <a href="https://link.springer.com/chapter/10.1007/978-981-97-6794-6_47" target="_blank" class="card reveal">
+      <span class="arrow">&#8599;</span>
+      <div class="chip">Publication</div>
+      <h3>Unreliable Server Queues in Markovian Environment</h3>
+      <div class="org">Springer, ICCMSE 2023</div>
+      <p>Comparative performance investigation of queueing systems. Poster presented at the International Conference on Computational Modeling and Sustainable Energy.</p>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="experience" style="padding-top:0;">
+  <div class="section-label">Experience</div>
+  <h2>Where I've Worked</h2>
+  <div class="cards">
+    <div class="card card-static reveal">
+      <div class="chip">Jan 2026 - May 2026</div>
+      <h3>AI and Data Science Intern</h3>
+      <div class="org">United Nations Development Programme, Office of Audit & Investigations</div>
+      <p>Built an end-to-end forensic analytics platform as the sole data scientist. Clustering, anomaly detection, similarity search, LLM-driven narrative generation. Reduced manual review from weeks to minutes.</p>
+    </div>
+    <div class="card card-static reveal">
+      <div class="chip">May 2025 - Present</div>
+      <h3>Data Science Research Assistant</h3>
+      <div class="org">Rory Meyers College of Nursing, NYU</div>
+      <p>Bot-detection pipelines, NLP theme extraction on multi-country health data, psychometric validation. Poster accepted at AcademyHealth 2026, Seattle.</p>
+    </div>
+    <div class="card card-static reveal">
+      <div class="chip">May 2023 - Jun 2023</div>
+      <h3>Data Science Intern</h3>
+      <div class="org">Morris Garages Motor India</div>
+      <p>SAP & Python dashboards saving 5-7 hours/week. Power BI boards visualizing 50+ features. System testing in IoT-enabled vehicles.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="section-label">Get in Touch</div>
+  <h2>Let's connect.</h2>
+  <p>Actively looking for full-time roles in data science, NLP, healthcare AI, and applied ML.</p>
+  <div class="contact-btns">
+    <a href="mailto:vm2725@nyu.edu">vm2725@nyu.edu</a>
+    <a href="tel:+14435121320">(443) 512-1320</a>
+    <a href="https://www.linkedin.com/in/vidhi-manek20" target="_blank">LinkedIn</a>
+  </div>
+</section>
+
+<footer>&copy; 2026 Vidhi Manek. Built with coffee and curiosity.</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
